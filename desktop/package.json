@@ -1,0 +1,17 @@
+{
+  "name": "eyedoptimizer",
+  "private": true,
+  "version": "1.8.1",
+  "description": "EyedOptimizer — monitor de rendimiento, overlay FPS y utilidades del sistema (Windows, macOS y Linux)",
+  "author": "EyedOptimizer",
+  "license": "MIT",
+  "homepage": "https://optzr.eyedcomun.me",
+  "main": "electron/main.cjs",
+  "type": "module",
+  "dependencies": {
+    "discord-rpc": "^4.0.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "systeminformation": "^5.33.0"
+  }
+}

@@ -1,0 +1,7 @@
+node_modules/
+dist-setup/
+payload/
+icon.png
+icon.ico
+license.txt
+*.log

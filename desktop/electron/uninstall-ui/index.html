@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EyedOptimizer Uninstall</title>
+    <link rel="stylesheet" href="ui.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="stage">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="mesh" aria-hidden="true"></div>
+      <button type="button" class="win-btn win-min" id="btnMin" title="Minimizar">─</button>
+      <button type="button" class="win-btn win-close" id="btnClose" title="Cerrar">×</button>
+      <div class="steps" id="stepDots">
+        <span data-step="welcome" class="on"></span>
+        <span data-step="progress"></span>
+      </div>
+      <main class="frame">
+        <section class="card" id="viewWelcome">
+          <div class="logo-mark" aria-hidden="true"></div>
+          <h1>Desinstalar</h1>
+          <p class="lead">Se eliminarán EyedOptimizer, accesos directos y la entrada del sistema.</p>
+          <p class="path-preview" id="pathPreview">—</p>
+          <div class="actions center">
+            <button type="button" class="btn ghost" id="btnCancel">CANCELAR</button>
+            <button type="button" class="btn primary" id="btnStart">DESINSTALAR</button>
+          </div>
+        </section>
+        <section class="card hidden" id="viewProgress">
+          <h1 class="compact">Desinstalando…</h1>
+          <p class="lead left" id="progressMsg">Preparando…</p>
+          <div class="bar"><div class="bar-fill" id="progressFill"></div></div>
+          <div class="pct" id="progressPct">0%</div>
+        </section>
+        <section class="card hidden" id="viewDone">
+          <h1 class="compact">Desinstalación lista.</h1>
+          <p class="lead">EyedOptimizer se ha eliminado de este equipo.</p>
+          <button type="button" class="btn primary" id="btnDone">CERRAR</button>
+        </section>
+        <section class="card hidden" id="viewError">
+          <h1 class="compact">Algo falló</h1>
+          <p class="lead error-text" id="errorMsg">Error desconocido</p>
+          <button type="button" class="btn primary" id="btnRetry">VOLVER</button>
+        </section>
+      </main>
+      <footer class="foot">
+        <div class="foot-line">Carpeta: <span id="footPath">—</span></div>
+        <div class="foot-line muted" id="footVer"></div>
+      </footer>
+    </div>
+    <script src="ui.js"></script>
+  </body>
+</html>

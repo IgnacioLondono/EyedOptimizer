@@ -1,0 +1,437 @@
+/* EyedOptimizer OSD — negro/blanco, tipografía del sistema de la app, sin blur/opacity CSS */
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: max-content;
+  height: max-content;
+  min-width: 100%;
+  min-height: 100%;
+  overflow: visible;
+  background: transparent !important;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.osd-root {
+  --font: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --mono: 'IBM Plex Mono', Consolas, monospace;
+  width: max-content;
+  height: max-content;
+  display: flex;
+  padding: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.osd-root[data-corner='tl'] {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.osd-root[data-corner='tr'] {
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.osd-root[data-corner='bl'] {
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.osd-root[data-corner='br'] {
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.osd-root[data-layout='bar'] {
+  justify-content: center;
+}
+
+.osd-shell {
+  position: relative;
+  width: 228px;
+  padding: 12px 12px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-left: 2px solid #fff;
+  background: rgba(0, 0, 0, 0.82);
+  color: #fff;
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  /* Evita que el scale desplace el anclaje visual */
+  will-change: auto;
+  backface-visibility: hidden;
+}
+
+.osd-shell-bar {
+  width: max-content;
+  min-width: 320px;
+  max-width: 920px;
+  padding: 8px 30px 8px 14px;
+  border-left-width: 2px;
+}
+
+.osd-gear {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.35);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+}
+
+.osd-gear:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Header */
+.osd-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-right: 18px;
+  margin-bottom: 10px;
+}
+
+.osd-head-name {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.osd-live {
+  flex-shrink: 0;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #fff;
+}
+
+/* FPS hero */
+.osd-hero {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.osd-hero-main {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.osd-hero-num {
+  font-family: var(--font);
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.osd-hero-unit {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.osd-statgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px 10px;
+}
+
+.osd-statgrid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.osd-statgrid span {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.osd-statgrid b {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.osd-ft {
+  margin-top: 10px;
+}
+
+.osd-ft-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.osd-ft-row span {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.osd-ft-row b {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.osd-graph {
+  display: block;
+  width: 100%;
+  height: 36px;
+}
+
+.osd-warn {
+  margin: 8px 0 0;
+  font-size: 9px;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Hardware */
+.osd-hw {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.osd-hw-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.osd-hw-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.osd-hw-label {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.78);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+
+.osd-hw-top b {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.osd-hw-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.osd-meter {
+  height: 2px;
+  margin-top: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.osd-meter i {
+  display: block;
+  height: 100%;
+  background: #fff;
+}
+
+/* Bar layout */
+.osd-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 16px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.osd-strip > span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.osd-strip small {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.osd-strip-game {
+  font-family: var(--font);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.osd-strip-fps {
+  font-family: var(--font);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Config */
+.osd-cfg-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  pointer-events: auto;
+  background: rgba(0, 0, 0, 0.55);
+  font-family: var(--font, 'Space Grotesk', sans-serif);
+}
+
+.osd-cfg {
+  width: min(380px, 100%);
+  max-height: 100%;
+  overflow: auto;
+  padding: 16px 18px;
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+.osd-cfg header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+
+.osd-cfg-kicker {
+  margin: 0 0 2px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.osd-cfg header strong {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.osd-cfg header button {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: transparent;
+  color: #fff;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.osd-cfg-row {
+  display: grid;
+  grid-template-columns: 64px 1fr 42px;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+}
+
+.osd-cfg-row em {
+  font-style: normal;
+  text-align: right;
+  font-family: var(--mono, monospace);
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.osd-cfg-block {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.osd-cfg-block > span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.osd-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.osd-chips button {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.75);
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.osd-chips button.on {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.osd-cfg-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  font-size: 13px;
+  cursor: pointer;
+}

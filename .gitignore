@@ -1,0 +1,37 @@
+# Dependencies
+**/node_modules/
+**/.venv/
+**/__pycache__/
+*.pyc
+
+# Builds / releases / installers
+desktop/dist/
+desktop/dist-dir*/
+desktop/dist-*/
+desktop/release/
+desktop/release-*/
+desktop/publish-out/
+desktop/setup-ui/dist*/
+desktop/asar-extract/
+desktop/**/win-unpacked/
+desktop/**/win-unpacked.tmp/
+**/*.exe
+**/*.blockmap
+**/*.zip
+dist/
+build/
+web/downloads/
+
+# Local / secrets
+.env
+.env.*
+!.env.example
+*.local
+desktop/game-library.json
+
+# Refs / junk
+_ref_capframex/
+.DS_Store
+Thumbs.db
+*.tsbuildinfo
+tools/clean-history.ps1

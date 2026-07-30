@@ -1,0 +1,54 @@
+{
+  "name": "eyedoptimizer-setup",
+  "private": true,
+  "version": "1.7.8",
+  "description": "EyedOptimizer Setup — instalador profesional",
+  "author": "EyedOptimizer",
+  "license": "MIT",
+  "main": "main.cjs",
+  "productName": "EyedOptimizer Setup",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^43.2.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.eyedoptimizer.setup",
+    "productName": "EyedOptimizer Setup",
+    "copyright": "Copyright © 2026 EyedOptimizer",
+    "directories": {
+      "output": "dist-setup"
+    },
+    "files": [
+      "main.cjs",
+      "preload.cjs",
+      "index.html",
+      "ui.css",
+      "ui.js",
+      "license.txt",
+      "icon.png",
+      "icon.ico",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "payload/app-payload.zip",
+        "to": "app-payload.zip"
+      }
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ],
+      "icon": "icon.ico",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "portable": {
+      "artifactName": "EyedOptimizer-Setup-${version}.${ext}"
+    },
+    "compression": "normal",
+    "asar": true
+  }
+}

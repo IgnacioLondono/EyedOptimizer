@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EyedOptimizer Setup</title>
+    <link rel="stylesheet" href="ui.css" />
+  </head>
+  <body>
+    <div class="stage">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="mesh" aria-hidden="true"></div>
+
+      <button type="button" class="win-btn win-min" id="btnMin" title="Minimizar">─</button>
+      <button type="button" class="win-btn win-close" id="btnClose" title="Cerrar">×</button>
+
+      <div class="steps" id="stepDots" aria-hidden="true">
+        <span data-step="welcome" class="on"></span>
+        <span data-step="location"></span>
+        <span data-step="license"></span>
+        <span data-step="progress"></span>
+      </div>
+
+      <div class="steps hidden" id="stepDotsUn" aria-hidden="true">
+        <span data-step="unWelcome" class="on"></span>
+        <span data-step="progress"></span>
+      </div>
+
+      <main class="frame">
+        <!-- 1 Bienvenida -->
+        <section class="card" id="viewWelcome">
+          <img class="logo" src="icon.png" alt="" width="72" height="72" />
+          <h1>EyedOptimizer</h1>
+          <p class="lead">Monitor · FPS · Red. Instalación limpia en tu usuario, sin administrador.</p>
+          <div class="checks">
+            <label class="check">
+              <input type="checkbox" id="chkDesktop" checked />
+              <span>Acceso directo en el escritorio</span>
+            </label>
+            <label class="check">
+              <input type="checkbox" id="chkStart" checked />
+              <span>Acceso en el menú Inicio</span>
+            </label>
+          </div>
+          <button type="button" class="btn primary huge" id="btnWelcomeNext">SIGUIENTE</button>
+        </section>
+
+        <!-- 2 Ubicación -->
+        <section class="card hidden" id="viewLocation">
+          <h1 class="compact">Ubicación</h1>
+          <p class="lead left">Elige la carpeta donde se instalará EyedOptimizer.</p>
+          <label class="field-label">Carpeta de instalación</label>
+          <div class="path-row">
+            <input type="text" id="inputDir" readonly />
+            <button type="button" class="btn ghost" id="btnBrowse">EXAMINAR</button>
+          </div>
+          <p class="disk" id="freeSpace">—</p>
+          <div class="actions">
+            <button type="button" class="btn ghost" id="btnLocBack">ATRÁS</button>
+            <button type="button" class="btn primary" id="btnLocNext">SIGUIENTE</button>
+          </div>
+        </section>
+
+        <!-- 3 Licencia -->
+        <section class="card hidden" id="viewLicense">
+          <h1 class="compact">Contrato de licencia</h1>
+          <p class="lead left">Revisa y acepta para continuar.</p>
+          <pre class="license" id="licenseBox"></pre>
+          <label class="check accept">
+            <input type="checkbox" id="chkAccept" />
+            <span>Acepto los términos de la licencia</span>
+          </label>
+          <div class="actions">
+            <button type="button" class="btn ghost" id="btnLicBack">ATRÁS</button>
+            <button type="button" class="btn primary" id="btnInstall" disabled>INSTALAR</button>
+          </div>
+        </section>
+
+        <!-- Uninstall welcome -->
+        <section class="card hidden" id="viewUnWelcome">
+          <img class="logo" src="icon.png" alt="" width="72" height="72" />
+          <h1>Desinstalar</h1>
+          <p class="lead">Se eliminarán EyedOptimizer, accesos directos y la entrada del sistema.</p>
+          <p class="path-preview" id="unPathPreview">—</p>
+          <div class="actions center">
+            <button type="button" class="btn ghost" id="btnUnCancel">CANCELAR</button>
+            <button type="button" class="btn primary" id="btnUnStart">DESINSTALAR</button>
+          </div>
+        </section>
+
+        <!-- Progress -->
+        <section class="card hidden" id="viewProgress">
+          <h1 class="compact" id="progressTitle">Instalando…</h1>
+          <p class="lead left" id="progressMsg">Preparando archivos…</p>
+          <div class="bar"><div class="bar-fill" id="progressFill"></div></div>
+          <div class="pct" id="progressPct">0%</div>
+        </section>
+
+        <!-- Done -->
+        <section class="card hidden" id="viewDone">
+          <h1 class="compact" id="doneTitle">Instalación ya hecha.</h1>
+          <div class="opts" id="doneOpts">
+            <label class="opt">
+              <input type="radio" name="post" value="launch" checked />
+              <span>Iniciar EyedOptimizer</span>
+            </label>
+            <label class="opt">
+              <input type="radio" name="post" value="close" />
+              <span>Cerrar el instalador</span>
+            </label>
+          </div>
+          <p class="lead hidden" id="doneUnMsg">EyedOptimizer se ha eliminado de este equipo.</p>
+          <div class="actions">
+            <button type="button" class="btn ghost" id="btnDoneClose">CERRAR</button>
+            <button type="button" class="btn primary" id="btnDoneLaunch">INICIAR</button>
+          </div>
+        </section>
+
+        <!-- Error -->
+        <section class="card hidden" id="viewError">
+          <h1 class="compact">Algo falló</h1>
+          <p class="lead error-text" id="errorMsg">Error desconocido</p>
+          <button type="button" class="btn primary" id="btnRetry">VOLVER</button>
+        </section>
+      </main>
+
+      <footer class="foot">
+        <div class="foot-line"><span id="footLabel">Destino:</span> <span id="footPath">—</span></div>
+        <div class="foot-line muted" id="footVer"></div>
+      </footer>
+    </div>
+    <script src="ui.js"></script>
+  </body>
+</html>
